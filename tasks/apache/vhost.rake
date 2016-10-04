@@ -7,6 +7,7 @@
 # vars:
     # :app_vhosts_folder    - location of vhosts files in application
     # :apache_vhosts_folder - loaction of apache vhosts
+
 namespace :apache_vhost do
     # Install application conf file
     task :install do

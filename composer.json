@@ -13,6 +13,6 @@
             "email": "anton.mccook@bradleydyer.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "dev-master",
     "require": {}
 }
