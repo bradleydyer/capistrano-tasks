@@ -4,7 +4,7 @@ List of capistrano tasks used on BradleyDyer infrastructure.
 
 ## Usage and Installation
  - Add to your composer.json dependencies:
-```json
+```
 ...
     "require": {
         ...,
