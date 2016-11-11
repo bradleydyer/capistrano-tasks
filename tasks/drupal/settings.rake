@@ -2,7 +2,7 @@
 # Drupal Settings tasks
 # Composer tasks are run on 'web' and 'drupal' role
 # global vars:
-    # :release_path
+    # :shared_path
 # vars:
     # :drupal_settings_file_path - location of settings file in application
     # :drupal_settings_file_name - name of settings file in application
@@ -12,7 +12,7 @@ namespace :drupal do
         task :touch do
             on roles(:web, :drupal) do
                 info "Creating empty settings.php file"
-                execute :touch, "#{release_path}/web/sites/default/settings.php"
+                execute :touch, "#{shared_path}/web/sites/default/settings.php"
                 info "settings.php file has been created"
             end
         end
@@ -20,7 +20,7 @@ namespace :drupal do
         task :install do
             on roles(:web, :drupal) do
                 info "Install settings.php file"
-                execute :cp, "#{fetch(:drupal_settings_file_path)}/#{fetch(:drupal_settings_file_name)} #{release_path}/web/sites/default/settings.php"
+                execute :cp, "#{fetch(:drupal_settings_file_path)}/#{fetch(:drupal_settings_file_name)} #{shared_path}/web/sites/default/settings.php"
                 info "settings.php file has been installed"
             end
         end
