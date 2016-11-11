@@ -31,7 +31,7 @@ namespace :htaccess do
         task :stage do
             on roles(:web, :htaccess) do
                 info "Installing stage .htaccess file"
-                execute "cp #{release_path}/config/environment/#{fetch(:stage)}/htaccess/.htaccess #{fetch(:app_httpdocs_folder)}/.htaccess"
+                execute "cp #{release_path}/config/environment/#{fetch(:stage)}/htaccess/.htaccess #{release_path}/#{fetch(:app_httpdocs_folder)}/.htaccess"
             end
         end
 
@@ -39,7 +39,7 @@ namespace :htaccess do
         task :default do
             on roles(:web, :htaccess) do
                 info "Installing default .htaccess file"
-                execute "cp #{release_path}/config/environment/default/htaccess/.htaccess #{fetch(:app_httpdocs_folder)}/.htaccess"
+                execute "cp #{release_path}/config/environment/default/htaccess/.htaccess #{release_path}/#{fetch(:app_httpdocs_folder)}/.htaccess"
             end
         end
     end
