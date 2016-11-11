@@ -16,9 +16,17 @@ namespace :drupal do
             on roles(:web, :drupal) do
                 invoke 'drupal:assets:symlink:files'
                 invoke 'drupal:assets:symlink:private'
+                info "Created symlinks to files and private"
             end
         end
 
+        task :permissions do
+            on roles(:web, :drupal) do
+                info "fixing remote assets permissions"
+                execute "sudo find #{fetch(:nfs_folder)}  ! \\( -user www-data -and -group deploy \\) -exec chown www-data:deploy {} \\;"
+                execute "sudo find #{fetch(:nfs_folder)}  -type d -exec chmod g+rwxs {} \\;"
+            end
+        end
 
         namespace :symlink do
             task :files do
@@ -33,9 +41,11 @@ namespace :drupal do
 
             task :private do
                 on roles(:web, :drupal) do
-                    info "Creating empty settings.php file"
-                    execute :touch, "#{release_path}/web/sites/default/settings.php"
-                    info "settings.php file has been created"
+                    info "Create shared private"
+                    execute "mkdir -p #{fetch(:nfs_folder)}/private"
+                    execute "mkdir -p #{shared_path}/#{fetch(:assets_private_folder)}"
+                    execute :rm, "-rf", "#{shared_path}/#{fetch(:assets_private_folder)}"
+                    execute :ln, "-s", "#{fetch(:nfs_folder)}/private", "#{shared_path}/#{fetch(:assets_private_folder)}"
                 end
             end
         end
