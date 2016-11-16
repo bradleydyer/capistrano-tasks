@@ -2,6 +2,7 @@
 # Apache tasks
 # Apache tasks are run on 'web' and 'apache' roles
 # global vars:
+    # :release_path
     # :stage
     # :application
 # vars:
@@ -14,7 +15,34 @@ namespace :apache do
         task :install do
             on roles(:web, :apache) do
                 info "Installing apache virtual host conf file"
-                execute "cp #{fetch(:app_vhosts_folder)}/#{fetch(:stage)}.conf #{fetch(:apache_vhosts_folder)}/#{fetch(:application)}.conf"
+                if remote_file_exists?("#{release_path}/config/environment/#{fetch(:stage)}/vhosts/vhost.conf")
+                    invoke 'apache:vhost:install:stage'
+                else
+                    info "Looking for default vhost file"
+                    if remote_file_exists?("#{release_path}/config/environment/default/vhosts/vhost.conf")
+                        invoke 'apache:vhost:install:default'
+                    end
+                end
+
+                info "Virtual host conf file has been installed"
+            end
+        end
+
+        namespace :install do
+            # Install stage vhost
+            task :stage do
+                on roles(:web, :apache) do
+                    info "Installing stage vhost"
+                    execute "cp #{release_path}/config/environment/#{fetch(:stage)}/vhosts/vhost.conf #{fetch(:apache_vhosts_folder)}/#{fetch(:application)}.conf"
+                end
+            end
+
+            # Install default vhost
+            task :default do
+                on roles(:web, :apache) do
+                    info "Installing default vhost"
+                    execute "cp #{release_path}/config/environment/default/vhosts/vhost.conf #{fetch(:apache_vhosts_folder)}/#{fetch(:application)}.conf"
+                end
             end
         end
 
