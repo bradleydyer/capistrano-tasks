@@ -33,9 +33,9 @@ namespace :drupal do
                 on roles(:web, :drupal) do
                     info "Create shared files"
                     execute "mkdir -p #{fetch(:nfs_folder)}/files"
-                    execute "mkdir -p #{shared_path}/#{fetch(:assets_files_folder)}"
-                    execute :rm, "-rf", "#{shared_path}/#{fetch(:assets_files_folder)}"
-                    execute :ln, "-s", "#{fetch(:nfs_folder)}/files", "#{shared_path}/#{fetch(:assets_files_folder)}"
+                    execute "mkdir -p #{release_path}/#{fetch(:assets_files_folder)}"
+                    execute :rm, "-rf", "#{release_path}/#{fetch(:assets_files_folder)}"
+                    execute :ln, "-s", "#{fetch(:nfs_folder)}/files", "#{release_path}/#{fetch(:assets_files_folder)}"
                 end
             end
 
@@ -43,9 +43,9 @@ namespace :drupal do
                 on roles(:web, :drupal) do
                     info "Create shared private"
                     execute "mkdir -p #{fetch(:nfs_folder)}/private"
-                    execute "mkdir -p #{shared_path}/#{fetch(:assets_private_folder)}"
-                    execute :rm, "-rf", "#{shared_path}/#{fetch(:assets_private_folder)}"
-                    execute :ln, "-s", "#{fetch(:nfs_folder)}/private", "#{shared_path}/#{fetch(:assets_private_folder)}"
+                    execute "mkdir -p #{release_path}/#{fetch(:assets_private_folder)}"
+                    execute :rm, "-rf", "#{release_path}/#{fetch(:assets_private_folder)}"
+                    execute :ln, "-s", "#{fetch(:nfs_folder)}/private", "#{release_path}/#{fetch(:assets_private_folder)}"
                 end
             end
         end
