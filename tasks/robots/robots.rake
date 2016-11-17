@@ -39,7 +39,7 @@ namespace :robots do
         task :default do
             on roles(:web, :robots) do
                 info "Installing default robots file"
-                execute "cp #{release_path}/config/environment/default/robots/robots.robots #{release_path}/#{fetch(:app_httpdocs_folder)}/robots.txt"
+                execute "cp #{release_path}/config/environment/default/robots/robots.txt #{release_path}/#{fetch(:app_httpdocs_folder)}/robots.txt"
             end
         end
     end
