@@ -1,6 +1,6 @@
 # Author: Kris Rybak - kris@krisrybak.com
 # Drupal Settings tasks
-# Composer tasks are run on 'web' and 'drupal' role
+# Drupal tasks are run on 'web' and 'drupal' role
 # global vars:
     # :release_path
     # :stage
