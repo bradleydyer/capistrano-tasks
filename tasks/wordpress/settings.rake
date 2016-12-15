@@ -25,14 +25,14 @@ namespace :wordpress do
         end
         namespace :install do
             task :stage do
-                on roles(:web, :drupal) do
+                on roles(:web, :wordpress) do
                     info "Installing #{fetch(:stage)} wp-config.php version of the file"
                     execute :cp, "#{release_path}/config/environment/#{fetch(:stage)}/settings/#{fetch(:wordpress_config_file_name)} #{release_path}/web/wp-config.php"
                 end
             end
 
             task :default do
-                on roles(:web, :drupal) do
+                on roles(:web, :wordpress) do
                     info "Installing default wp-config.php version of the file"
                     execute :cp, "#{release_path}/config/environment/default/settings/#{fetch(:wordpress_config_file_name)} #{release_path}/web/wp-config.php"
                 end
