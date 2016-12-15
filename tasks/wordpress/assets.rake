@@ -23,8 +23,8 @@ namespace :wordpress do
                 on roles(:web, :wordpress) do
                     info "Create shared files"
                     execute "mkdir -p #{fetch(:nfs_folder)}/uploads"
-                    execute :rm, "-rf", "#{release_path}/#{fetch(:assets_files_folder)}"
-                    execute :ln, "-s", "#{fetch(:nfs_folder)}/uploads", "#{release_path}/#{fetch(:assets_files_folder)}"
+                    execute :rm, "-rf", "#{release_path}/#{fetch(:wordpress_assets_files_folder)}"
+                    execute :ln, "-s", "#{fetch(:nfs_folder)}/uploads", "#{release_path}/#{fetch(:wordpress_assets_files_folder)}"
                 end
             end
         end
