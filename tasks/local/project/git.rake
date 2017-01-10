@@ -21,7 +21,6 @@ namespace :local do
                         execute "sudo chmod 0775 .git/hooks/post-merge"
                     end
                 end
-
             end
         end
     end
