@@ -8,20 +8,14 @@ List of capistrano tasks used on BradleyDyer infrastructure.
 ...
     "require": {
         ...,
-        "bradleydyer/capistrano-tasks": "^0.0",
-    },
-    "repositories": [
-        ...,
-        {
-            "type": "vcs",
-            "url": "git@github.com:bradleydyer/capistrano-tasks.git"
-        }
-    ]
+        "bradleydyer/capistrano-tasks": "^1.4",
+    }
 ```
  - run `composer update`
  - load tasks in your Capfile
 ```ruby
 Dir.glob('vendor/bradleydyer/capistrano-tasks/tasks/*/*.rake').each { |r| import r }
+Dir.glob('vendor/bradleydyer/capistrano-tasks/tasks/*/*/*.rake').each { |r| import r }
 ```
 
 ### Tag based deployment
