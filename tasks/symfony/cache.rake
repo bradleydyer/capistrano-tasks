@@ -31,5 +31,13 @@ namespace :symfony do
                 Rake::Task['symfony:cache:permissions'].reenable
             end
         end
+
+        task :set_acl do
+            on roles(:web, :symfony) do
+                info "Setting the ACL for the var folder"
+                execute "setfacl -d -m u::rwX,g::rwX,o::rwX #{release_path}/var"
+                info "ACL Updated"
+            end
+        end
     end
 end
