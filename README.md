@@ -22,6 +22,7 @@ List of capistrano tasks used on BradleyDyer infrastructure.
  - load tasks in your Capfile
 ```ruby
 Dir.glob('vendor/bradleydyer/capistrano-tasks/tasks/*/*.rake').each { |r| import r }
+Dir.glob('vendor/bradleydyer/capistrano-tasks/tasks/*/*/*.rake').each { |r| import r }
 ```
 
 ### Tag based deployment
