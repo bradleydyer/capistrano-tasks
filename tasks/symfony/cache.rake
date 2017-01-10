@@ -22,7 +22,7 @@ namespace :symfony do
             end
         end
 
-        task :permissions
+        task :permissions do
             on roles(:web, :symfony) do
                 info "Updating cache permissions"
                 execute "sudo chown -R www-data:deploy #{release_path}/var"
