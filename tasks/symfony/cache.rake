@@ -28,6 +28,7 @@ namespace :symfony do
                 execute "sudo chown -R www-data:deploy #{release_path}/var"
                 execute "sudo chmod -R 0777 #{release_path}/var"
                 info "Cache permissions updated"
+                Rake::Task['symfony:cache:permissions'].reenable
             end
         end
     end
