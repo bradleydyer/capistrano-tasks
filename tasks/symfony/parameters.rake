@@ -9,7 +9,7 @@ namespace :symfony do
         task :install do
             on roles(:web, :symfony) do
                 info "Installing parameters file"
-                execute "cp /etc/bradleydyer/sites/#{fetch(:application)}/parameters.yml #{release_path}/app/config/parameters.yml"
+                execute "cp #{fetch(:symfony_parameters_source_folder)}/#{fetch(:application)}/parameters.yml #{release_path}/app/config/parameters.yml"
                 info "Parameters file installed"
             end
         end
