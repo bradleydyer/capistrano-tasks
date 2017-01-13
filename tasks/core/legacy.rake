@@ -5,6 +5,7 @@
     # :release_path
 # vars:
     # :nfs_folder - nfs location path
+
 namespace :core do
     namespace :legacy do
 

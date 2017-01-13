@@ -1,10 +1,9 @@
 # Author: Anton McCook - asmccook@gmail.com
 # Core CMS files task
 # Core tasks are run on 'assets' role
-# global vars:
-    # :release_path
 # vars:
     # :nfs_folder - nfs location path
+
 namespace :core do
     namespace :files do
 

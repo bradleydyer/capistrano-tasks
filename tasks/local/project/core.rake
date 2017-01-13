@@ -1,8 +1,6 @@
 # Author: Anton McCook - anton.mccook@bradleydyer.com
 # local:project:core tasks
 # local:project:core tasks are run locally
-# global vars:
-    # :application
 
 namespace :local do
     namespace :project do
