@@ -1,3 +1,3 @@
-server 'qa-01-eu.bd-ns.net', user: 'deploy', roles: %w{db web files app assets}
+server 'web.example.com', user: 'deploy', roles: %w{db web}
 
 set :branch, ENV['branch'] || 'develop'
