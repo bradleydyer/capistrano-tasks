@@ -6,9 +6,9 @@ List of capistrano tasks used on BradleyDyer infrastructure.
  - Add to your composer.json dependencies:
 ```
 ...
-    "require": {
+    "require-dev": {
         ...,
-        "bradleydyer/capistrano-tasks": "^1.4",
+        "bradleydyer/capistrano-tasks": "^1.5",
     }
 ```
  - run `composer update`
