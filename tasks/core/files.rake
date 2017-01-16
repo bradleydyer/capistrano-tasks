@@ -17,6 +17,7 @@ namespace :core do
         def create_excludes_string(paths)
             transformed_paths = paths.map { |path| "--exclude=\"" + path + "\"" };
             exclude_string = transformed_paths.join(' ')
+
             return exclude_string
         end
 
