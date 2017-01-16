@@ -7,7 +7,7 @@
 namespace :core do
     namespace :files do
         set :default_rsync_flags,     Array.[]('--archive', '--verbose', '--checksum', '--no-perms')
-        set :excluded_download_paths, Array.[]('video/*', 'uploads/documents/*.pdf')
+        set :excluded_download_paths, Array.[]('video/*', 'uploads/documents/*')
         set :excluded_upload_paths,   Array.[]('data/*', 'xml_files/*')
 
         # Creates a string of excludes
