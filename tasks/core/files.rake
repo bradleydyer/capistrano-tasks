@@ -51,7 +51,6 @@ namespace :core do
                     run_locally do
                         set :excludes, create_excludes_string(fetch(:excluded_download_paths))
                         set :flags,    create_rsync_flags_string()
-
                         execute "rsync #{fetch(:flags)} #{fetch(:excludes)} #{role.user}@#{role.hostname}:#{fetch(:nfs_folder)}/ legacy/"
                     end
                 end
@@ -64,7 +63,6 @@ namespace :core do
                     run_locally do
                         set :excludes, create_excludes_string(fetch(:excluded_upload_paths))
                         set :flags,    create_rsync_flags_string()
-
                         execute "rsync #{fetch(:flags)} #{fetch(:excludes)} legacy/ #{role.user}@#{role.hostname}:#{fetch(:nfs_folder)}/"
                     end
                 end
@@ -75,7 +73,6 @@ namespace :core do
                     run_locally do
                         set :excludes, create_excludes_string(fetch(:excluded_upload_paths))
                         set :flags,    create_rsync_flags_string(Array.[]('--dry-run'))
-
                         execute "rsync #{fetch(:flags)} #{fetch(:excludes)} legacy/ #{role.user}@#{role.hostname}:#{fetch(:nfs_folder)}/"
                     end
                 end
