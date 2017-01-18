@@ -10,7 +10,7 @@ namespace :symfony do
         task :install do
             on roles(:web, :symfony) do
                 info "Running bin/console assets:install"
-                execute "cd #{release_path} php bin/console assets:install --env=prod"
+                execute "cd #{release_path} && php bin/console assets:install --env=prod"
                 info "Assets installed"
             end
         end
