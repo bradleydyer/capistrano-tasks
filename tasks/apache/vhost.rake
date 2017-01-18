@@ -14,17 +14,18 @@ namespace :apache do
         # Install application conf file
         task :install do
             on roles(:web, :apache) do
-                info "Installing apache virtual host conf file"
+                info "Looking for apache virtual host file"
                 if remote_file_exists?("#{release_path}/config/environment/#{fetch(:stage)}/vhosts/vhost.conf")
+                    info "#{fetch(:stage)} vhost conf file found!"
                     invoke 'apache:vhost:install:stage'
+                    info "Virtual host conf file has been installed"
+                elsif remote_file_exists?("#{release_path}/config/environment/default/vhosts/vhost.conf")
+                    info "default vhost conf file found!"
+                    invoke 'apache:vhost:install:default'
+                    info "Virtual host conf file has been installed"
                 else
-                    info "Looking for default vhost file"
-                    if remote_file_exists?("#{release_path}/config/environment/default/vhosts/vhost.conf")
-                        invoke 'apache:vhost:install:default'
-                    end
+                    info "No virtual host file found."
                 end
-
-                info "Virtual host conf file has been installed"
             end
         end
 
