@@ -5,7 +5,6 @@
 namespace :local do
     namespace :project do
         namespace :symfony do
-
             namespace :assets do
                 task :install do
                     run_locally do
