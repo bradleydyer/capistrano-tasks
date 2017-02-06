@@ -40,7 +40,7 @@ namespace :git do
 
         task :ask do
             run_locally do
-                set :default_tag, `git tag`.split("\n").last
+                set :default_tag, `git tag -l | sort -V`.split("\n").last
                 set :tags, `git tag`.split("\n")
                 ask(:answer, "Tag to deploy? [#{fetch(:default_tag)}]")
 
