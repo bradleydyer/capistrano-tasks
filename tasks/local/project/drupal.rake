@@ -1,8 +1,6 @@
 # Author: Anton McCook <anton.mccook@bradleydyer.com>
 # local:project:drupal tasks
 # local:project:drupal tasks are run locally
-# global vars:
-    # :application
 
 namespace :local do
     namespace :project do
