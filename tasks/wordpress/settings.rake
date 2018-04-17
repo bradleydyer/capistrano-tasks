@@ -6,6 +6,7 @@
     # :stage
 # vars:
     # :wordpress_config_file_name - name of config file in application
+set :wordpress_settings_files_folder, "web"
 
 namespace :wordpress do
     namespace :settings do
@@ -27,14 +28,14 @@ namespace :wordpress do
             task :stage do
                 on roles(:web, :wordpress) do
                     info "Installing #{fetch(:stage)} wp-config.php version of the file"
-                    execute :cp, "#{release_path}/config/environment/#{fetch(:stage)}/settings/#{fetch(:wordpress_config_file_name)} #{release_path}/web/wp-config.php"
+                    execute :cp, "#{release_path}/config/environment/#{fetch(:stage)}/settings/#{fetch(:wordpress_config_file_name)} #{release_path}/#{fetch(:wordpress_settings_files_folder)}/wp-config.php"
                 end
             end
 
             task :default do
                 on roles(:web, :wordpress) do
                     info "Installing default wp-config.php version of the file"
-                    execute :cp, "#{release_path}/config/environment/default/settings/#{fetch(:wordpress_config_file_name)} #{release_path}/web/wp-config.php"
+                    execute :cp, "#{release_path}/config/environment/default/settings/#{fetch(:wordpress_config_file_name)} #{release_path}/#{fetch(:wordpress_settings_files_folder)}/wp-config.php"
                 end
             end
         end
