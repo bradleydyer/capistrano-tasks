@@ -18,7 +18,7 @@
             end
         end
         namespace :rebuild do
-            task :node-sass do
+            task :nodesass do
                 on roles(:web, :npm) do
                     info "Running npm rebuild node-sass --force"
                     execute "cd #{release_path}#{fetch(:npm_package_folder)} && npm rebuild node-sass --force"
